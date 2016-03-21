@@ -53,6 +53,16 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PiedraPapelTijeras.Core\PiedraPapelTijeras.Core.csproj">
+      <Project>{64aafb57-957c-4e0c-949d-dbf393d40447}</Project>
+      <Name>PiedraPapelTijeras.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PiedraPapelTijeras.WPF\PiedraPapelTijeras.WPF.csproj">
+      <Project>{efed21f8-34a5-46ed-97e8-f63f46f2094f}</Project>
+      <Name>PiedraPapelTijeras.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

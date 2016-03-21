@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiedraPapelTijeras.WPF", "PiedraPapelTijeras.WPF\PiedraPapelTijeras.WPF.csproj", "{EFED21F8-34A5-46ED-97E8-F63F46F2094F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiedraPapelTijeras.WPF.Tests", "PiedraPapelTijeras.WPF.Tests\PiedraPapelTijeras.WPF.Tests.csproj", "{861E33BC-96F9-4FF1-9E0F-D2C91EF6F503}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFED21F8-34A5-46ED-97E8-F63F46F2094F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFED21F8-34A5-46ED-97E8-F63F46F2094F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFED21F8-34A5-46ED-97E8-F63F46F2094F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFED21F8-34A5-46ED-97E8-F63F46F2094F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861E33BC-96F9-4FF1-9E0F-D2C91EF6F503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861E33BC-96F9-4FF1-9E0F-D2C91EF6F503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861E33BC-96F9-4FF1-9E0F-D2C91EF6F503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861E33BC-96F9-4FF1-9E0F-D2C91EF6F503}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

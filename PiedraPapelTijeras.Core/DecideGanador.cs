@@ -37,15 +37,15 @@ namespace PiedraPapelTijeras.Core
 
         private static bool SonTodasLasEleccionesIguales(List<Jugada> jugadas)
         {
-            Eleccion tmpEleccion = Eleccion.Desconocido;
+            Type tmpEleccion = null;
             var sonTodasIguales = true;
             foreach (var jugada in jugadas)
             {
-                if (tmpEleccion == Eleccion.Desconocido)
+                if (tmpEleccion == null)
                 {
-                    tmpEleccion = jugada.Eleccion;
+                    tmpEleccion = jugada.Eleccion.GetType();
                 }
-                else if (tmpEleccion != jugada.Eleccion)
+                else if (tmpEleccion != jugada.Eleccion.GetType())
                 {
                     sonTodasIguales = false;
                 }

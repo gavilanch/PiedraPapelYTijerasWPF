@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PiedraPapelTijeras.Core.Models
 {
-    public abstract class Eleccion
+    public class Tijera: Eleccion
     {
     }
 }

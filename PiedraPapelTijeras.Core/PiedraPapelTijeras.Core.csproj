@@ -43,8 +43,11 @@
     <Compile Include="DecideGanador.cs" />
     <Compile Include="Models\Eleccion.cs" />
     <Compile Include="Models\Jugada.cs" />
+    <Compile Include="Models\Papel.cs" />
+    <Compile Include="Models\Piedra.cs" />
     <Compile Include="Models\Resultado.cs" />
     <Compile Include="Models\ResultadoJugada.cs" />
+    <Compile Include="Models\Tijera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

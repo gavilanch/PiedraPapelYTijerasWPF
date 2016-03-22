@@ -8,24 +8,16 @@ namespace PiedraPapelTijeras.Core.Models
 {
     public class Piedra : Eleccion
     {
+        private Dictionary<Type, Resultado> _diccionarioResultados = new Dictionary<Type, Resultado>()
+       {
+           {typeof(Piedra), Resultado.Empate },
+           {typeof(Tijera), Resultado.Ganado },
+           {typeof(Papel), Resultado.Perdido }
+       };
+
         public override Resultado JugarContra(Eleccion eleccion)
         {
-            var type = eleccion.GetType();
-
-            if (type == typeof(Piedra))
-            {
-                return Resultado.Empate;
-            }
-            else if (type == typeof(Tijera))
-            {
-                return Resultado.Ganado;
-            }
-            else if (type == typeof(Papel))
-            {
-                return Resultado.Perdido;
-            }
-
-            return Resultado.Empate;
+            return _diccionarioResultados[eleccion.GetType()];
         }
     }
 }

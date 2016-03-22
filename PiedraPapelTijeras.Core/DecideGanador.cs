@@ -32,7 +32,10 @@ namespace PiedraPapelTijeras.Core
 
         private static ResultadoJugada DecidirResultadoDosJugadores(List<Jugada> jugadas)
         {
-            throw new NotImplementedException();   
+            var resultadoJugada = new ResultadoJugada();
+            Resultado resultado = jugadas[0].Eleccion.JugarContra(jugadas[1].Eleccion);
+            resultadoJugada.Resultado = resultado;
+            return resultadoJugada;
         }
 
         private static bool SonTodasLasEleccionesIguales(List<Jugada> jugadas)

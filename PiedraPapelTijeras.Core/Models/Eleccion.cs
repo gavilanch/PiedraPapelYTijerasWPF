@@ -8,5 +8,6 @@ namespace PiedraPapelTijeras.Core.Models
 {
     public abstract class Eleccion
     {
+        public abstract Resultado JugarContra(Eleccion eleccion);
     }
 }

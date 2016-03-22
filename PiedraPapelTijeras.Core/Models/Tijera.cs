@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace PiedraPapelTijeras.Core.Models
 {
-    public class Tijera: Eleccion
+    public class Tijera : Eleccion
     {
+        public override Resultado JugarContra(Eleccion eleccion)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

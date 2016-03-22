@@ -20,7 +20,19 @@ namespace PiedraPapelTijeras.Core
                 return resultadoJugada;
             }
 
-            throw new NotImplementedException();
+            if (jugadas.Count() == 2)
+            {
+               return DecidirResultadoDosJugadores(jugadas);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private static ResultadoJugada DecidirResultadoDosJugadores(List<Jugada> jugadas)
+        {
+            throw new NotImplementedException();   
         }
 
         private static bool SonTodasLasEleccionesIguales(List<Jugada> jugadas)

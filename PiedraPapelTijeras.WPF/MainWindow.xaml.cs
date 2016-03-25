@@ -22,14 +22,15 @@ namespace PiedraPapelTijeras.WPF
     public partial class MainWindow : Window
     {
         private List<Marcador> _marcador;
-        private Random _rnd;
         private int _numeroDeJugadores = 2;
         private ServicioJugadas _servicioJugadas;
+        private ServicioPuntaje _servicioPuntaje;
 
         public MainWindow()
         {
             InitializeComponent();
             _servicioJugadas = new ServicioJugadas();
+            _servicioPuntaje = new ServicioPuntaje();
             _marcador = Marcador.ObtenerMarcador(_numeroDeJugadores);
             gridMarcador.ItemsSource = _marcador;
         }
@@ -59,15 +60,7 @@ namespace PiedraPapelTijeras.WPF
 
         private void ActualizarPuntaje(ResultadoJugada decideGanador)
         {
-            if (decideGanador.Resultado == Resultado.Ganado)
-            {
-                _marcador[0].Puntuacion++;
-            }
-            else if (decideGanador.Resultado == Resultado.Perdido)
-            {
-                _marcador[1].Puntuacion++;
-            }
-
+            _servicioPuntaje.ActualizarPuntaje(_marcador, decideGanador);
             gridMarcador.ItemsSource = null;
             gridMarcador.ItemsSource = _marcador;
         }

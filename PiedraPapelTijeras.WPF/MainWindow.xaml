@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PiedraPapelTijeras.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Piedra, Papel y Tijeras" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 1"></TextBlock>
+                <Image Width="100" Source="imagenes/Interrogacion.png" Margin="5"></Image>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,50,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Width="100" Source="imagenes/Piedra.png" Margin="15"></Image>
+                <Image Width="100" Source="imagenes/Papel.png" Margin="15"></Image>
+                <Image Width="100" Source="imagenes/Tijera.png" Margin="15"></Image>
+            </StackPanel>
+            <TextBlock Text="Selecciona" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <DataGrid Name="Marcador" Grid.Column="1" Grid.RowSpan="2">
+           
+        </DataGrid>
+
+
     </Grid>
 </Window>

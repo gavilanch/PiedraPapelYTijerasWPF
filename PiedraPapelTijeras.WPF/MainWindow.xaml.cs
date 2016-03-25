@@ -1,6 +1,7 @@
 ﻿using PiedraPapelTijeras.Core;
 using PiedraPapelTijeras.Core.Models;
 using PiedraPapelTijeras.WPF.Models;
+using PiedraPapelTijeras.WPF.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,15 @@ namespace PiedraPapelTijeras.WPF
     {
         private List<Marcador> _marcador;
         private Random _rnd;
+        private int _numeroDeJugadores = 2;
+        private ServicioJugadas _servicioJugadas;
+
         public MainWindow()
         {
             InitializeComponent();
-            _marcador = Marcador.ObtenerMarcador(2);
+            _servicioJugadas = new ServicioJugadas();
+            _marcador = Marcador.ObtenerMarcador(_numeroDeJugadores);
             gridMarcador.ItemsSource = _marcador;
-            _rnd = new Random(Environment.TickCount);
         }
 
         private void imgPiedra_MouseUp(object sender, MouseButtonEventArgs e)
@@ -47,34 +51,10 @@ namespace PiedraPapelTijeras.WPF
 
         private void Jugar(Eleccion eleccionDelJugador1)
         {
-            var jugada1 = new Jugada() { Id = 1, Eleccion = eleccionDelJugador1 };
-
-            var eleccionDelJugador2 = EleccionAleatoria();
-
-            var jugada2 = new Jugada() { Id = 2, Eleccion = eleccionDelJugador2 };
-
-            var jugadas = new List<Jugada>()
-            {
-                jugada1, jugada2
-            };
-
+            List<Jugada> jugadas = _servicioJugadas.
+                ObtenerJugadas(eleccionDelJugador1, _numeroDeJugadores);
             var decideGanador = DecideGanador.Decidir(jugadas);
-
             ActualizarPuntaje(decideGanador);
-        }
-
-        private Eleccion EleccionAleatoria()
-        {
-            var dictElecciones = new Dictionary<int, Eleccion>()
-            {
-                {1, new Piedra()},
-                {2, new Papel()},
-                {3, new Tijera()}
-            };
-
-            int numeroAleatorio = _rnd.Next(1, 4);
-
-            return dictElecciones[numeroAleatorio];
         }
 
         private void ActualizarPuntaje(ResultadoJugada decideGanador)

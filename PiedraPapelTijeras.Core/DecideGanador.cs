@@ -51,6 +51,7 @@ namespace PiedraPapelTijeras.Core
                 else if (tmpEleccion != jugada.Eleccion.GetType())
                 {
                     sonTodasIguales = false;
+                    break;
                 }
             }
 

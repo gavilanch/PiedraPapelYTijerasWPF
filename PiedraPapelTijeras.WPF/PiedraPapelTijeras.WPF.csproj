@@ -68,6 +68,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Marcador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,7 +95,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PiedraPapelTijeras.Core\PiedraPapelTijeras.Core.csproj">
+      <Project>{64aafb57-957c-4e0c-949d-dbf393d40447}</Project>
+      <Name>PiedraPapelTijeras.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="imagenes\Interrogacion.png" />
     <Resource Include="imagenes\papel.png" />

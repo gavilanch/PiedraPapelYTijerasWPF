@@ -21,24 +21,31 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical">
-                <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 1"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 2"></TextBlock>
                 <Image Width="100" Source="imagenes/Interrogacion.png" Margin="5"></Image>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="0,50,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Width="100" Source="imagenes/Piedra.png" Margin="15"></Image>
-                <Image Width="100" Source="imagenes/Papel.png" Margin="15"></Image>
-                <Image Width="100" Source="imagenes/Tijera.png" Margin="15"></Image>
+                <Image Name="imgPiedra" Width="100" Source="imagenes/Piedra.png" 
+                       Margin="15" MouseUp="imgPiedra_MouseUp">
+                </Image>
+                <Image Name="imgPapel" Width="100" Source="imagenes/Papel.png" 
+                       Margin="15" MouseUp="imgPapel_MouseUp"></Image>
+                <Image Name="imgTijera" Width="100" Source="imagenes/Tijera.png" 
+                       Margin="15" MouseUp="imgTijera_MouseUp"></Image>
             </StackPanel>
             <TextBlock Text="Selecciona" HorizontalAlignment="Center" />
         </StackPanel>
 
-        <DataGrid Name="Marcador" Grid.Column="1" Grid.RowSpan="2">
-           
+        <DataGrid Name="gridMarcador" 
+                  Grid.Column="1" Grid.RowSpan="2"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jugador" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Puntos" Binding="{Binding Puntuacion}" />
+            </DataGrid.Columns>
         </DataGrid>
-
-
     </Grid>
 </Window>

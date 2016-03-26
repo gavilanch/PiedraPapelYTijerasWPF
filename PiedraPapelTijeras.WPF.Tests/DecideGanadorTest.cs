@@ -162,5 +162,38 @@ namespace PiedraPapelTijeras.WPF.Tests
             Assert.AreEqual(decideGanador.Resultado, Resultado.Ganado);
         }
 
+        [TestMethod]
+        public void Tres_Jugadores_Tijera_Contra_Piedra_y_Tijera_Perdida()
+        {
+            var jugada1 = new Jugada() { Id = 1, Eleccion = new Tijera() };
+            var jugada2 = new Jugada() { Id = 2, Eleccion = new Piedra() };
+            var jugada3 = new Jugada() { Id = 3, Eleccion = new Tijera() };
+
+            var jugadas = new List<Jugada>()
+            {
+                jugada1, jugada2, jugada3
+            };
+
+            var decideGanador = DecideGanador.Decidir(jugadas);
+
+            Assert.AreEqual(decideGanador.Resultado, Resultado.Perdido);
+        }
+
+        [TestMethod]
+        public void Tres_Jugadores_Elecciones_Distintas_Empate()
+        {
+            var jugada1 = new Jugada() { Id = 1, Eleccion = new Tijera() };
+            var jugada2 = new Jugada() { Id = 2, Eleccion = new Piedra() };
+            var jugada3 = new Jugada() { Id = 3, Eleccion = new Papel() };
+
+            var jugadas = new List<Jugada>()
+            {
+                jugada1, jugada2, jugada3
+            };
+
+            var decideGanador = DecideGanador.Decidir(jugadas);
+
+            Assert.AreEqual(decideGanador.Resultado, Resultado.Empate);
+        }
     }
 }

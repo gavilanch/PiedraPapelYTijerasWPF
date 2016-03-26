@@ -75,17 +75,22 @@ namespace PiedraPapelTijeras.Core
 
                     var resultado = DecidirResultadoDosJugadores(jugadas[i], jugadas[j]);
 
-                    if (dictResultadosPorId.ContainsKey(IdJugadorActual))
-                    {
-                        dictResultadosPorId[IdJugadorActual].Add(resultado.Resultado);
-                    }
-                    else
-                    {
-                        dictResultadosPorId[IdJugadorActual] = new List<Resultado>() { resultado.Resultado };
-                    }
+                    EmpujarResultadoAlDiccionario(dictResultadosPorId, IdJugadorActual, resultado);
                 }
             }
             return dictResultadosPorId;
+        }
+
+        private static void EmpujarResultadoAlDiccionario(Dictionary<int, List<Resultado>> dictResultadosPorId, int IdJugadorActual, ResultadoJugada resultado)
+        {
+            if (dictResultadosPorId.ContainsKey(IdJugadorActual))
+            {
+                dictResultadosPorId[IdJugadorActual].Add(resultado.Resultado);
+            }
+            else
+            {
+                dictResultadosPorId[IdJugadorActual] = new List<Resultado>() { resultado.Resultado };
+            }
         }
 
         private static ResultadoJugada DecidirResultadoDosJugadores(Jugada jugada1, Jugada jugada2)

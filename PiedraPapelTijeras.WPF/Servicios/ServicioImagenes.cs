@@ -10,7 +10,7 @@ namespace PiedraPapelTijeras.WPF.Servicios
     public class ServicioImagenes
     {
         private Dictionary<Type, string> _dictEleccionImagen;
-
+        private string _imagenPorDefecto;
         public ServicioImagenes()
         {
             _dictEleccionImagen = new Dictionary<Type, string>()
@@ -19,11 +19,19 @@ namespace PiedraPapelTijeras.WPF.Servicios
                 {typeof (Tijera), "imagenes/tijera.png" },
                 {typeof(Papel), "imagenes/papel.png" }
             };
+
+            _imagenPorDefecto = "imagenes/Interrogacion.png";
+
         }
 
         internal string ObtenerImagen(Jugada jugada)
         {
             return _dictEleccionImagen[jugada.Eleccion.GetType()];
+        }
+
+        internal string ObtenerImagenPorDefecto()
+        {
+            return _imagenPorDefecto;   
         }
     }
 }

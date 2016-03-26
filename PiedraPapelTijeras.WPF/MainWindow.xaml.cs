@@ -55,14 +55,18 @@ namespace PiedraPapelTijeras.WPF
         private void ActualizarImagenesOponentes(List<Jugada> jugadas)
         {
             string rutaImagen = _servicioImagenes.ObtenerImagen(jugadas[1]);
-            imgJugador2.Source = new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
+            imgJugador2.Source = ConvertirRutaAImagen(rutaImagen);
 
             if (_numeroDeJugadores == 3)
             {
                 rutaImagen = _servicioImagenes.ObtenerImagen(jugadas[2]);
-                imgJugador3.Source = new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
+                imgJugador3.Source = ConvertirRutaAImagen(rutaImagen);
             }
+        }
 
+        private BitmapImage ConvertirRutaAImagen(string rutaImagen)
+        {
+            return new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
         }
 
         private void ActualizarPuntaje(ResultadoJugada decideGanador)
@@ -75,6 +79,7 @@ namespace PiedraPapelTijeras.WPF
         private void itemMenuNuevo_Click(object sender, RoutedEventArgs e)
         {
             IniciarNuevoMarcador();
+            ReiniciarImagenes();
         }
 
         private void IniciarNuevoMarcador()
@@ -84,12 +89,19 @@ namespace PiedraPapelTijeras.WPF
             gridMarcador.ItemsSource = _marcador;
         }
 
+        private void ReiniciarImagenes()
+        {
+            imgJugador2.Source = ConvertirRutaAImagen(_servicioImagenes.ObtenerImagenPorDefecto());
+            imgJugador3.Source = ConvertirRutaAImagen(_servicioImagenes.ObtenerImagenPorDefecto());
+        }
+
         private void itemMenuJugarDe3_Click(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;
             _numeroDeJugadores = (item.IsChecked) ? 3 : 2;
             stackJugador3.Visibility = (item.IsChecked) ? Visibility.Visible : Visibility.Collapsed;
             IniciarNuevoMarcador();
+            ReiniciarImagenes();
         }
 
         private void itemMenuSalir_Click(object sender, RoutedEventArgs e)

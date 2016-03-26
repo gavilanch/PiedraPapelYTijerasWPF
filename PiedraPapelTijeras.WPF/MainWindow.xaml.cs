@@ -2,9 +2,11 @@
 using PiedraPapelTijeras.Core.Models;
 using PiedraPapelTijeras.WPF.Models;
 using PiedraPapelTijeras.WPF.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace PiedraPapelTijeras.WPF
 {
@@ -14,12 +16,15 @@ namespace PiedraPapelTijeras.WPF
         private int _numeroDeJugadores = 2;
         private ServicioJugadas _servicioJugadas;
         private ServicioPuntaje _servicioPuntaje;
+        private ServicioImagenes _servicioImagenes;
 
         public MainWindow()
         {
             InitializeComponent();
+
             _servicioJugadas = new ServicioJugadas();
             _servicioPuntaje = new ServicioPuntaje();
+            _servicioImagenes = new ServicioImagenes();
             _marcador = Marcador.ObtenerMarcador(_numeroDeJugadores);
             gridMarcador.ItemsSource = _marcador;
         }
@@ -43,8 +48,15 @@ namespace PiedraPapelTijeras.WPF
         {
             List<Jugada> jugadas = _servicioJugadas.
                 ObtenerJugadas(eleccionDelJugador1, _numeroDeJugadores);
+            ActualizarImagenesOponentes(jugadas);
             var decideGanador = DecideGanador.Decidir(jugadas);
             ActualizarPuntaje(decideGanador);
+        }
+
+        private void ActualizarImagenesOponentes(List<Jugada> jugadas)
+        {
+            string rutaImagen = _servicioImagenes.ObtenerImagen(jugadas[1]);
+            imgJugador2.Source = new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
         }
 
         private void ActualizarPuntaje(ResultadoJugada decideGanador)

@@ -22,7 +22,7 @@
                     HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 2"></TextBlock>
-                <Image Width="100" Source="imagenes/Interrogacion.png" Margin="5"></Image>
+                <Image Name="imgJugador2"  Width="70" Source="imagenes/Interrogacion.png" Margin="5"></Image>
             </StackPanel>
         </StackPanel>
 

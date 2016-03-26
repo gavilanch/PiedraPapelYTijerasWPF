@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PiedraPapelTijeras.WPF"
         mc:Ignorable="d"
-        Title="Piedra, Papel y Tijeras" Height="350" Width="525">
+        Title="Piedra, Papel y Tijeras" Height="370" Width="525">
     <Grid>
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
@@ -17,7 +19,16 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"  
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="Opciones">
+                <MenuItem Header="Nuevo..." />
+                <MenuItem Header="Jugar de 3" IsCheckable="True" />
+                <Separator />
+                <MenuItem Header="Salir" />
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal"  
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical">
@@ -30,7 +41,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0,50,0,0">
+        <StackPanel Grid.Row="2" Margin="0,50,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Name="imgPiedra" Width="100" Source="imagenes/Piedra.png" 
                        Margin="15" MouseUp="imgPiedra_MouseUp">
@@ -44,7 +55,7 @@
         </StackPanel>
 
         <DataGrid Name="gridMarcador" 
-                  Grid.Column="1" Grid.RowSpan="2"
+                  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Jugador" Binding="{Binding Description}" />

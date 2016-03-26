@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiciosJugadasTest.cs" />
     <Compile Include="ServicioPuntajeTest.cs" />
+    <Compile Include="MarcadorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PiedraPapelTijeras.Core\PiedraPapelTijeras.Core.csproj">

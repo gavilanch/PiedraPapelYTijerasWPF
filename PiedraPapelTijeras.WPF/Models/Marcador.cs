@@ -34,7 +34,7 @@ namespace PiedraPapelTijeras.WPF.Models
             {
                 listadoMarcador.Add(new Marcador()
                 {
-                    Id = 2,
+                    Id = 3,
                     Description = "Jugador 3",
                     Puntuacion = 0
                 });

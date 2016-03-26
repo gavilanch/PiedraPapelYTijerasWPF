@@ -9,13 +9,13 @@ namespace PiedraPapelTijeras.Core
 {
     public static class DecideGanador
     {
-        private static int _IdJugador1 = 1;
+        private readonly static int _IdJugador1 = 1;
 
         public static ResultadoJugada Decidir(List<Jugada> jugadas)
         {
             var resultadoJugada = new ResultadoJugada();
             var sonTodasIguales = SonTodasLasEleccionesIguales(jugadas);
-
+            
             if (sonTodasIguales)
             {
                 resultadoJugada.Resultado = Resultado.Empate;
@@ -101,6 +101,18 @@ namespace PiedraPapelTijeras.Core
             var resultadoJugada = new ResultadoJugada();
             Resultado resultado = jugada1.Eleccion.JugarContra(jugada2.Eleccion);
             resultadoJugada.Resultado = resultado;
+
+            var ganadores = new List<int>();
+            if (resultado == Resultado.Ganado)
+            {
+                ganadores.Add(jugada1.Id);
+            } else if (resultado == Resultado.Perdido)
+            {
+                ganadores.Add(jugada2.Id);
+            }
+
+            resultadoJugada.Ganadores = ganadores;
+
             return resultadoJugada;
         }
 

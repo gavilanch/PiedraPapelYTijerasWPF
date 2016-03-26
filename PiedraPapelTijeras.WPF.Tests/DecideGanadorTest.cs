@@ -214,5 +214,23 @@ namespace PiedraPapelTijeras.WPF.Tests
             Assert.IsTrue(decideGanador.Ganadores.Contains(2));
             Assert.IsFalse(decideGanador.Ganadores.Contains(3));
         }
+
+        [TestMethod]
+        public void Dos_Jugadores_Con_Misma_Eleccion_Lista_Ganadores_No_Null()
+        {
+            var jugada1 = new Jugada() { Id = 1, Eleccion = new Piedra() };
+            var jugada2 = new Jugada() { Id = 2, Eleccion = new Piedra() };
+
+            var jugadas = new List<Jugada>()
+            {
+                jugada1, jugada2
+            };
+
+            var decideGanador = DecideGanador.Decidir(jugadas);
+
+            Assert.IsFalse(decideGanador.Ganadores == null);
+
+        }
+
     }
 }

@@ -8,6 +8,11 @@ namespace PiedraPapelTijeras.Core.Models
 {
     public class ResultadoJugada
     {
+        public ResultadoJugada()
+        {
+            Ganadores = new List<int>();
+        }
+
         public Resultado Resultado { get; set; }
         public List<int> Ganadores { get; set; }
     }

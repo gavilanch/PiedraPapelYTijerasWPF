@@ -10,13 +10,13 @@ namespace PiedraPapelTijeras.WPF.Servicios
 {
     public class ServicioPuntaje
     {
-        public void ActualizarPuntaje(List<Marcador> marcador, ResultadoJugada decideGanador)
+        public void ActualizarPuntaje(List<Marcador> marcador, ResultadoJugada resultadoJugada)
         {
-            if (decideGanador.Resultado == Resultado.Ganado)
+            if (resultadoJugada.Resultado == Resultado.Ganado)
             {
                 marcador[0].Puntuacion++;
             }
-            else if (decideGanador.Resultado == Resultado.Perdido)
+            else if (resultadoJugada.Resultado == Resultado.Perdido)
             {
                 marcador[1].Puntuacion++;
             }

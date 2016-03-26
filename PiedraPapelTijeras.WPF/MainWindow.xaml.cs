@@ -5,6 +5,7 @@ using PiedraPapelTijeras.WPF.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -21,12 +22,10 @@ namespace PiedraPapelTijeras.WPF
         public MainWindow()
         {
             InitializeComponent();
-
             _servicioJugadas = new ServicioJugadas();
             _servicioPuntaje = new ServicioPuntaje();
             _servicioImagenes = new ServicioImagenes();
-            _marcador = Marcador.ObtenerMarcador(_numeroDeJugadores);
-            gridMarcador.ItemsSource = _marcador;
+            IniciarNuevoMarcador();
         }
 
         private void imgPiedra_MouseUp(object sender, MouseButtonEventArgs e)
@@ -71,6 +70,31 @@ namespace PiedraPapelTijeras.WPF
             _servicioPuntaje.ActualizarPuntaje(_marcador, decideGanador);
             gridMarcador.ItemsSource = null;
             gridMarcador.ItemsSource = _marcador;
+        }
+
+        private void itemMenuNuevo_Click(object sender, RoutedEventArgs e)
+        {
+            IniciarNuevoMarcador();
+        }
+
+        private void IniciarNuevoMarcador()
+        {
+            gridMarcador.ItemsSource = null;
+            _marcador = Marcador.ObtenerMarcador(_numeroDeJugadores);
+            gridMarcador.ItemsSource = _marcador;
+        }
+
+        private void itemMenuJugarDe3_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            _numeroDeJugadores = (item.IsChecked) ? 3 : 2;
+            stackJugador3.Visibility = (item.IsChecked) ? Visibility.Visible : Visibility.Collapsed;
+            IniciarNuevoMarcador();
+        }
+
+        private void itemMenuSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

@@ -21,10 +21,11 @@
 
         <Menu Grid.ColumnSpan="2">
             <MenuItem Header="Opciones">
-                <MenuItem Header="Nuevo..." />
-                <MenuItem Header="Jugar de 3" IsCheckable="True" />
+                <MenuItem Name="itemMenuNuevo" Header="Nuevo..." Click="itemMenuNuevo_Click" />
+                <MenuItem Name="itemMenuJugarDe3" Header="Jugar de 3" IsCheckable="True"
+                          Click="itemMenuJugarDe3_Click" />
                 <Separator />
-                <MenuItem Header="Salir" />
+                <MenuItem Name="itemMenuSalir" Header="Salir" Click="itemMenuSalir_Click" />
             </MenuItem>
         </Menu>
 

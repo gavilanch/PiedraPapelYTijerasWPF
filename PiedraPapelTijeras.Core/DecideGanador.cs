@@ -38,6 +38,7 @@ namespace PiedraPapelTijeras.Core
             List<int> ganadores = ExtraerGanadores(dictResultadosPorId);
 
             var resultadoJugada = new ResultadoJugada();
+            resultadoJugada.Ganadores = ganadores;
 
             if (!ganadores.Any())
             {
@@ -59,7 +60,9 @@ namespace PiedraPapelTijeras.Core
         private static List<int> ExtraerGanadores(Dictionary<int, List<Resultado>> dictResultadosPorId)
         {
             return dictResultadosPorId.Where(x =>
-            x.Value.All(v => v == Resultado.Ganado)).Select(x => x.Key).ToList();
+            x.Value.Any(v => v == Resultado.Ganado)
+            && !x.Value.Any(v => v == Resultado.Perdido)
+            ).Select(x => x.Key).ToList();
         }
 
         private static Dictionary<int, List<Resultado>> ObtenerResultadosJugadasDosADos(List<Jugada> jugadas)

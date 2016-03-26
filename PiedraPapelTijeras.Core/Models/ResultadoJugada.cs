@@ -9,5 +9,6 @@ namespace PiedraPapelTijeras.Core.Models
     public class ResultadoJugada
     {
         public Resultado Resultado { get; set; }
+        public List<int> Ganadores { get; set; }
     }
 }

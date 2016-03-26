@@ -9,6 +9,8 @@ namespace PiedraPapelTijeras.Core
 {
     public static class DecideGanador
     {
+        private static int _IdJugador1 = 1;
+
         public static ResultadoJugada Decidir(List<Jugada> jugadas)
         {
             var resultadoJugada = new ResultadoJugada();
@@ -22,18 +24,74 @@ namespace PiedraPapelTijeras.Core
 
             if (jugadas.Count() == 2)
             {
-               return DecidirResultadoDosJugadores(jugadas);
+                return DecidirResultadoDosJugadores(jugadas[0], jugadas[1]);
             }
             else
             {
-                throw new NotImplementedException();
+                return DecidirResultadoMasDeDosJugadores(jugadas);
             }
         }
 
-        private static ResultadoJugada DecidirResultadoDosJugadores(List<Jugada> jugadas)
+        private static ResultadoJugada DecidirResultadoMasDeDosJugadores(List<Jugada> jugadas)
+        {
+            var dictResultadosPorId = ObtenerResultadosJugadasDosADos(jugadas);
+            List<int> ganadores = ExtraerGanadores(dictResultadosPorId);
+
+            var resultadoJugada = new ResultadoJugada();
+
+            if (!ganadores.Any())
+            {
+                resultadoJugada.Resultado = Resultado.Empate;
+            }
+            else if (ganadores.Contains(_IdJugador1))
+            {
+                resultadoJugada.Resultado = Resultado.Ganado;
+            }
+            else
+            {
+                resultadoJugada.Resultado = Resultado.Perdido;
+            }
+
+            return resultadoJugada;
+
+        }
+
+        private static List<int> ExtraerGanadores(Dictionary<int, List<Resultado>> dictResultadosPorId)
+        {
+            return dictResultadosPorId.Where(x =>
+            x.Value.All(v => v == Resultado.Ganado)).Select(x => x.Key).ToList();
+        }
+
+        private static Dictionary<int, List<Resultado>> ObtenerResultadosJugadasDosADos(List<Jugada> jugadas)
+        {
+            var dictResultadosPorId = new Dictionary<int, List<Resultado>>();
+
+            for (int i = 0; i < jugadas.Count(); i++)
+            {
+                var IdJugadorActual = jugadas[i].Id;
+                for (int j = 0; j < jugadas.Count(); j++)
+                {
+                    if (i == j) { continue; }
+
+                    var resultado = DecidirResultadoDosJugadores(jugadas[i], jugadas[j]);
+
+                    if (dictResultadosPorId.ContainsKey(IdJugadorActual))
+                    {
+                        dictResultadosPorId[IdJugadorActual].Add(resultado.Resultado);
+                    }
+                    else
+                    {
+                        dictResultadosPorId[IdJugadorActual] = new List<Resultado>() { resultado.Resultado };
+                    }
+                }
+            }
+            return dictResultadosPorId;
+        }
+
+        private static ResultadoJugada DecidirResultadoDosJugadores(Jugada jugada1, Jugada jugada2)
         {
             var resultadoJugada = new ResultadoJugada();
-            Resultado resultado = jugadas[0].Eleccion.JugarContra(jugadas[1].Eleccion);
+            Resultado resultado = jugada1.Eleccion.JugarContra(jugada2.Eleccion);
             resultadoJugada.Resultado = resultado;
             return resultadoJugada;
         }

@@ -14,7 +14,6 @@ namespace PiedraPapelTijeras.WPF.Servicios
 
         public ServicioJugadas()
         {
-
             _rnd = new Random(Environment.TickCount);
 
             _dictElecciones = new Dictionary<int, Eleccion>()

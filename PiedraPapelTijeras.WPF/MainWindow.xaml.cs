@@ -57,6 +57,13 @@ namespace PiedraPapelTijeras.WPF
         {
             string rutaImagen = _servicioImagenes.ObtenerImagen(jugadas[1]);
             imgJugador2.Source = new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
+
+            if (_numeroDeJugadores == 3)
+            {
+                rutaImagen = _servicioImagenes.ObtenerImagen(jugadas[2]);
+                imgJugador3.Source = new BitmapImage(new Uri(rutaImagen, UriKind.Relative));
+            }
+
         }
 
         private void ActualizarPuntaje(ResultadoJugada decideGanador)

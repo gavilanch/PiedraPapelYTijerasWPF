@@ -24,6 +24,10 @@
                 <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 2"></TextBlock>
                 <Image Name="imgJugador2"  Width="70" Source="imagenes/Interrogacion.png" Margin="5"></Image>
             </StackPanel>
+            <StackPanel x:Name="stackJugador3"  Orientation="Vertical" Visibility="Collapsed">
+                <TextBlock HorizontalAlignment="Center" Margin="5" Text="Jugador 3"></TextBlock>
+                <Image Name="imgJugador3"  Width="70" Source="imagenes/Interrogacion.png" Margin="5"></Image>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="0,50,0,0">

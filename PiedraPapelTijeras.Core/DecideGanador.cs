@@ -13,15 +13,6 @@ namespace PiedraPapelTijeras.Core
 
         public static ResultadoJugada Decidir(List<Jugada> jugadas)
         {
-            var resultadoJugada = new ResultadoJugada();
-            var sonTodasIguales = SonTodasLasEleccionesIguales(jugadas);
-            
-            if (sonTodasIguales)
-            {
-                resultadoJugada.Resultado = Resultado.Empate;
-                return resultadoJugada;
-            }
-
             if (jugadas.Count() == 2)
             {
                 return DecidirResultadoDosJugadores(jugadas[0], jugadas[1]);
@@ -106,7 +97,8 @@ namespace PiedraPapelTijeras.Core
             if (resultado == Resultado.Ganado)
             {
                 ganadores.Add(jugada1.Id);
-            } else if (resultado == Resultado.Perdido)
+            }
+            else if (resultado == Resultado.Perdido)
             {
                 ganadores.Add(jugada2.Id);
             }
@@ -114,26 +106,6 @@ namespace PiedraPapelTijeras.Core
             resultadoJugada.Ganadores = ganadores;
 
             return resultadoJugada;
-        }
-
-        private static bool SonTodasLasEleccionesIguales(List<Jugada> jugadas)
-        {
-            Type tmpEleccion = null;
-            var sonTodasIguales = true;
-            foreach (var jugada in jugadas)
-            {
-                if (tmpEleccion == null)
-                {
-                    tmpEleccion = jugada.Eleccion.GetType();
-                }
-                else if (tmpEleccion != jugada.Eleccion.GetType())
-                {
-                    sonTodasIguales = false;
-                    break;
-                }
-            }
-
-            return sonTodasIguales;
         }
     }
 }
